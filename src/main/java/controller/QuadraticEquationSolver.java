@@ -21,15 +21,9 @@ public class QuadraticEquationSolver {
 	}
 
 	/**
-	 * Returns the delta value of the passed quadratic equation.
+	 * Returns the delta value of the quadratic equation.
 	 * 
-	 * @param a
-	 *            The coefficient of squared x.
-	 * @param b
-	 *            The coefficient of x.
-	 * @param c
-	 *            The last coefficient.
-	 * @return The delta value of the given quadratic equation.
+	 * @return The delta value of the quadratic equation.
 	 */
 	public Double getDelta() {
 		return quadraticEcuation.getB() * quadraticEcuation.getB()
@@ -37,9 +31,8 @@ public class QuadraticEquationSolver {
 	}
 
 	/**
-	 * Solves the passed quadratic equation.
+	 * Solves the quadratic equation and sets its roots.
 	 * 
-	 * @param
 	 */
 	public void solveQuadraticEquation() {
 		if (getDelta() < 0) {
