@@ -40,5 +40,6 @@ public class MockTest {
 	@After
 	public void tearDow() {
 		quadraticEquationSolver = null;
+		equation = null;
 	}
 }
