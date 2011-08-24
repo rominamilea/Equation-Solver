@@ -12,18 +12,29 @@ public class QuadraticEquationSolver {
 
 	private QuadraticEquation quadraticEcuation;
 
+	/**
+	 * Constructs a new QuadraticEquationSolver object.
+	 */
 	public QuadraticEquationSolver() {
 		quadraticEcuation = new QuadraticEquation();
 	}
 
+	/**
+	 * Constructs a new QuadraticEquationSolver object having a specific
+	 * equation of second degree.
+	 * 
+	 * @param quadraticEcuation
+	 *            the equation of second degree to be set the quadratic equation
+	 *            of this class.
+	 */
 	public QuadraticEquationSolver(QuadraticEquation quadraticEcuation) {
 		this.quadraticEcuation = quadraticEcuation;
 	}
 
 	/**
-	 * Returns the delta value of the quadratic equation.
+	 * Returns the delta value of the quadratic equation of this class.
 	 * 
-	 * @return The delta value of the quadratic equation.
+	 * @return The delta value of the quadratic equation of this class
 	 */
 	public Double getDelta() {
 		return quadraticEcuation.getB() * quadraticEcuation.getB()
@@ -31,8 +42,7 @@ public class QuadraticEquationSolver {
 	}
 
 	/**
-	 * Solves the quadratic equation and sets its roots.
-	 * 
+	 * Solves the quadratic equation of this class.
 	 */
 	public void solveQuadraticEquation() {
 		if (getDelta() < 0) {
