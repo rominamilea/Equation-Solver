@@ -6,22 +6,7 @@ package model;
  * @author romina.milea
  * 
  */
-public class QuadraticEquation {
-
-	/**
-	 * Coefficient of x^2.
-	 */
-	private Double a;
-
-	/**
-	 * Coefficient of x.
-	 */
-	private Double b;
-
-	/**
-	 * The constant term.
-	 */
-	private Double c;
+public class QuadraticEquation extends Equation {
 
 	/**
 	 * The smaller root of the two roots.
@@ -34,29 +19,22 @@ public class QuadraticEquation {
 	private Double x2;
 
 	/**
-	 * Constructs a new QuadraticEquation object having all coefficients set to
-	 * zero.
+	 * Constructs a new QuadraticEquation object.
+	 * 
+	 * See also {@inheritDoc}
 	 */
 	public QuadraticEquation() {
-		a = new Double(0);
-		b = new Double(0);
-		c = new Double(0);
+		super(3);
 	}
 
 	/**
-	 * Construct a new QuadraticEquation object having the passed coefficients.
+	 * Constructs a new QuadraticEquation object.
 	 * 
-	 * @param a
-	 *            Coefficient of x^2.
-	 * @param b
-	 *            Coefficient of x.
-	 * @param c
-	 *            The constant term.
+	 * See also {@inheritDoc}
+	 * 
 	 */
-	public QuadraticEquation(Double a, Double b, Double c) {
-		this.a = a;
-		this.b = b;
-		this.c = c;
+	public QuadraticEquation(Double[] coefficients) {
+		super(coefficients);
 	}
 
 	/**
@@ -64,13 +42,11 @@ public class QuadraticEquation {
 	 * 
 	 * @return a hash code value for this object
 	 */
-	@Override
 	public int hashCode() {
 		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((a == null) ? 0 : a.hashCode());
-		result = prime * result + ((b == null) ? 0 : b.hashCode());
-		result = prime * result + ((c == null) ? 0 : c.hashCode());
+		int result = super.hashCode();
+		result = prime * result + ((x1 == null) ? 0 : x1.hashCode());
+		result = prime * result + ((x2 == null) ? 0 : x2.hashCode());
 		return result;
 	}
 
@@ -83,95 +59,35 @@ public class QuadraticEquation {
 	 * @return true if this object is the same as the obj argument; false
 	 *         otherwise
 	 */
-	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
 			return true;
-		if (obj == null)
+		if (!super.equals(obj))
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
 		QuadraticEquation other = (QuadraticEquation) obj;
-		if (a == null) {
-			if (other.a != null)
+		if (x1 == null) {
+			if (other.x1 != null)
 				return false;
-		} else if (!a.equals(other.a))
+		} else if (!x1.equals(other.x1))
 			return false;
-		if (b == null) {
-			if (other.b != null)
+		if (x2 == null) {
+			if (other.x2 != null)
 				return false;
-		} else if (!b.equals(other.b))
-			return false;
-		if (c == null) {
-			if (other.c != null)
-				return false;
-		} else if (!c.equals(other.c))
+		} else if (!x2.equals(other.x2))
 			return false;
 		return true;
 	}
 
 	/**
 	 * Returns custom string representation for this class.
+	 * 
 	 */
 	public String toString() {
-		return a + "x^2 + " + b + "x + " + c + " = 0";
-	}
-
-	/**
-	 * Sets the coefficient value for x^2 with a specific double value.
-	 * 
-	 * @param a
-	 *            the double value to be set the coefficient of x^2
-	 */
-	public void setA(Double a) {
-		this.a = a;
-	}
-
-	/**
-	 * Returns the coefficient of x^2.
-	 * 
-	 * @return the coefficient of x^2
-	 */
-	public Double getA() {
-		return a;
-	}
-
-	/**
-	 * Sets the coefficient value for x with a specific double value.
-	 * 
-	 * @param b
-	 *            the double value to be set the coefficient of x
-	 */
-	public void setB(Double b) {
-		this.b = b;
-	}
-
-	/**
-	 * Returns the coefficient of x.
-	 * 
-	 * @return the coefficient of x
-	 */
-	public Double getB() {
-		return b;
-	}
-
-	/**
-	 * Sets the constant term value with a specific double value.
-	 * 
-	 * @param c
-	 *            the double value to be set the constant term
-	 */
-	public void setC(Double c) {
-		this.c = c;
-	}
-
-	/**
-	 * Returns the constant term value.
-	 * 
-	 * @return the constant term value
-	 */
-	public Double getC() {
-		return c;
+		return getCoefficients()[0].intValue() + "x^2 + "
+			   + getCoefficients()[1].intValue() + "x + "
+			   + getCoefficients()[2].intValue() + " = 0";
 	}
 
 	/**

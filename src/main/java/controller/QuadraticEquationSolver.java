@@ -10,51 +10,44 @@ import model.QuadraticEquation;
  */
 public class QuadraticEquationSolver {
 
-	private QuadraticEquation quadraticEcuation;
-
 	/**
 	 * Constructs a new QuadraticEquationSolver object.
 	 */
 	public QuadraticEquationSolver() {
-		quadraticEcuation = new QuadraticEquation();
 	}
 
 	/**
-	 * Constructs a new QuadraticEquationSolver object having a specific
-	 * equation of second degree.
+	 * Returns the delta value of the specified quadratic equation.
 	 * 
-	 * @param quadraticEcuation
-	 *            the equation of second degree to be set the quadratic equation
-	 *            of this class.
+	 * @param equation
+	 *            the quadratic equation
+	 * @return delta value
 	 */
-	public QuadraticEquationSolver(QuadraticEquation quadraticEcuation) {
-		this.quadraticEcuation = quadraticEcuation;
+	private Double getDelta(QuadraticEquation equation) {
+		return (equation.getCoefficients()[1] * equation.getCoefficients()[1] - (4 * equation
+				.getCoefficients()[0] * equation.getCoefficients()[2]));
 	}
 
 	/**
-	 * Returns the delta value of the quadratic equation of this class.
+	 * Solves the specified quadratic equation of this class.
 	 * 
-	 * @return The delta value of the quadratic equation of this class
+	 * @param equation
+	 *            the quadratic equation
 	 */
-	public Double getDelta() {
-		return quadraticEcuation.getB() * quadraticEcuation.getB()
-				- (4 * quadraticEcuation.getA() * quadraticEcuation.getC());
-	}
+	public void solve(QuadraticEquation equation) {
 
-	/**
-	 * Solves the quadratic equation of this class.
-	 */
-	public void solveQuadraticEquation() {
-		if (getDelta() < 0) {
-			System.out.println("Equation solutions are not real numbers");
-		} else {
-			Double x1 = (-1 * quadraticEcuation.getB() - Math.sqrt(getDelta()))
-					/ (2 * quadraticEcuation.getA());
-			Double x2 = (-1 * quadraticEcuation.getB() + Math.sqrt(getDelta()))
-					/ (2 * quadraticEcuation.getA());
-			quadraticEcuation.setX1(x1);
-			quadraticEcuation.setX2(x2);
+		if (getDelta(equation) < 0) {
+			System.err.println("Equation solutions are not real numbers");
+			return;
 		}
+
+		Double x1 = (-1 * equation.getCoefficients()[1] - 
+					Math.sqrt(getDelta(equation))) / (2 * equation.getCoefficients()[0]);
+		Double x2 = (-1 * equation.getCoefficients()[1] + 
+					Math.sqrt(getDelta(equation))) / (2 * equation.getCoefficients()[0]);
+		equation.setX1(x1);
+		equation.setX2(x2);
+
 	}
 
 }
